@@ -141,3 +141,12 @@ int counter(int x)
     return 0;
   return counter(x >> 1) + (x & 1);
 }
+//
+
+//vector pair sort これは小さいもの順//
+bool compare_by_second(pair<int, int> a, pair<int, int> b)
+{
+  return a.second < b.second;
+}
+
+//

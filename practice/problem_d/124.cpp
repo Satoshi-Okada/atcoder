@@ -25,66 +25,47 @@ int main()
 {
     int x, y, z, k;
     cin >> x >> y >> z >> k;
-    vector<cake> vc;
-
-    int candle = 1;
-    ll deli;
-    rep(i, x)
-    {
-        cin >> deli;
-        vc.push_back((cake){deli, candle});
-    }
-    candle++;
-    rep(i, y)
-    {
-        cin >> deli;
-        vc.push_back((cake){deli, candle});
-    }
-    candle++;
-    rep(i, z)
-    {
-        cin >> deli;
-        vc.push_back((cake){deli, candle});
-    }
-
-    sort(vc.begin(), vc.end(), asc);
-    int ai = 0;
-    int bi = 0;
-    int ci = 0;
-    int index = 0;
     vector<ll> a;
     vector<ll> b;
     vector<ll> c;
 
-    while (ai * bi * ci < k)
+    ll deli;
+    rep(i, x)
     {
-        if (vc[index].candle == 1)
-        {
-            ai++;
-            a.push_back(vc[index].d);
-        }
-        else if (vc[index].candle == 2)
-        {
-            bi++;
-            b.push_back(vc[index].d);
-        }
-        else
-        {
-            ci++;
-            c.push_back(vc[index].d);
-        }
-        index++;
+        cin >> deli;
+        a.push_back(deli);
     }
-    vector<ll> ans;
-    int i, j, l;
-
-    for (i = 0; i < ai; i++)
+    sort(a.begin(), a.end(), greater<ll>());
+    rep(i, y)
     {
-        for (j = 0; j < bi; j++)
+        cin >> deli;
+        b.push_back(deli);
+    }
+    sort(b.begin(), b.end(), greater<ll>());
+
+    rep(i, z)
+    {
+        cin >> deli;
+        c.push_back(deli);
+    }
+    sort(c.begin(), c.end(), greater<ll>());
+
+    vector<ll> ans;
+
+    rep(i, x)
+    {
+        rep(j, y)
         {
-            for (l = 0; l < ci; l++)
+            rep(l, z)
             {
-                ans.push_back(a[i] + b[j] + c[l]);
+                if ((i + 1) * (j + 1) * (l + 1) <= k)
+                {
+                    ans.push_back(a[i] + b[j] + c[l]);
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }
