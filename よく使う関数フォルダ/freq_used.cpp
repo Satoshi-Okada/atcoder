@@ -41,7 +41,9 @@ T lcm(T x, T y)
 {
   T xy = x * y;
   if (x < y)
+  {
     swap(x, y);
+  }
   T r;
   r = x % y;
   while (r != 0)
