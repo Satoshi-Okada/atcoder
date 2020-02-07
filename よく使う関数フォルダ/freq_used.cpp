@@ -152,3 +152,14 @@ bool compare_by_second(pair<int, int> a, pair<int, int> b)
 }
 
 //
+
+//文字列がある部分文字列を含むか判定するやつ
+template <class T>
+bool contain(const std::string &s, const T &v)
+{
+  return s.find(v) != std::string::npos;
+}
+//
+
+
+
