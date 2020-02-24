@@ -11,63 +11,50 @@ const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 
-int n;
-vector<int> vc;
-string reject[] = {"AGC", "ACG", "AGAC", "AGCC", "AGGC", "AGTC","AAGC","ACGC","AGGC","ATGC","AGC"};
-ll ans = 0;
-template <class T>
-bool contain(const std::string &s, const T &v)
-{
-    return s.find(v) != std::string::npos;
-}
-bool check(string temp)
-{
-    int num = sizeof(reject);
-    rep(i,num)
-    {
-        if(contain(temp, reject[i]))
-        {
-            return false;
-        }
-    }
-    return true;
-}
 
-int dfs(string s)
-{
-    if (s.length()<4)
-    {
-        if (check(s))
-        {
-            ans++;
-        }
-        dfs(s + "A");
-        dfs(s + "G");
-        dfs(s + "C");
-        dfs(s + "T");
-    }else
-    {
-        if (check(s))
-        {
-            ans++;
-            if (s.length() < n)
-            {
-                dfs(s + "A");
-                dfs(s + "G");
-                dfs(s + "C");
-                dfs(s + "T");
-            }
-        }
-    }
-    
-    
-}
+int dp[101][4][4][4];
 
 int main()
 {
+    int n;
     cin >> n;
-    vc.resize(n+1);
-    dfs("");
-    cout << ans << endl;
+    dp[0][3][3][3] = 1;
+    for (int len = 0; len < n+1; len++)
+    {
+        for (int c1 = 0; c1 < 4; c1++)
+        {
+            for (int c2 = 0; c2 < 4; c2++)
+            {
+                for (int c3 = 0; c3 < 4; c3++)
+                {
+                    if(dp[len][c1][c2][c3] == 0) continue;
 
+                    for (int a = 0; a < 4; a++)
+                    {
+                        if(a==1 && c1==2 && c2 == 0)continue;
+                        if(a==2 && c1==1 && c2 == 0)continue;
+                        if(a==1 && c1==0 && c2 == 2)continue;
+                        if(a==1 && c2==2 && c3 == 0)continue;
+                        if(a==1 && c1==2 && c3 == 0)continue;
+
+                        dp[len+1][a][c1][c2] += dp[len][c1][c2][c3];
+                        dp[len + 1][a][c1][c2] %= MOD;
+                    }
+                }
+            }
+        }
+    }
+    ll ans = 0;
+    for (int c1 = 0; c1 < 4; c1++)
+    {
+        for (int c2 = 0; c2 < 4; c2++)
+        {
+            for (int c3 = 0; c3 < 4; c3++)
+            {
+                ans += dp[n][c1][c2][c3];
+                ans %= MOD;
+            }
+        }
+    }
+    cout << ans << endl;
 }
