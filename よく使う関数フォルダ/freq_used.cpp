@@ -134,6 +134,8 @@ long long COM(int n, int k)
     return 0;
   return fac[n] * (finv[k] * finv[n - k] % MOD) % MOD;
 }
+//mainでCOMinitをrunしてから、COM計算
+
 //
 
 //2進数表示した時の１が立つ数
@@ -161,5 +163,93 @@ bool contain(const std::string &s, const T &v)
 }
 //
 
+//素数判定
+template<class T>
+bool isPrime(T x)
+{
+  T i;
+  if (x < 2)
+    return false;
+  else if (x == 2)
+    return true;
+  if (x % 2 == 0)
+    return false;
+  for (i = 3; i * i <= x; i += 2)
+    if (x % i == 0)
+      return false;
+  return true;
+}
 
 
+//繰り返し二乗法。雰囲気だけ
+template <class T, class S>
+
+T PowMod(S n, T m)
+{
+  if (m==0)
+  {
+    return 1;
+  }
+  if (m%2 == 0)
+  {
+    return PowMod(n, m/2)*PowMod(n, m/2);
+  }
+  if (m%2 == 1)
+  {
+    return PowMod(n, m-1)%MOD;
+  }
+}
+
+//
+
+
+//MODの逆元を用いたコンビネーション
+template<class T>
+T inv_num(T num)
+{
+  return PowMod(num, MOD-1);
+}
+
+T COM(T n, T a)
+{
+  T X,Y;
+  X = 1;
+  Y = 1;
+  rep(i,a)
+  {
+    X *= (n-i)%MOD;
+    Y *= (a-i)%MOD;
+  }
+  return X*(inv_num(Y))%MOD;
+}
+//
+
+//UnionFind
+struct UnionFind
+{
+  vector<int> d;
+  UnionFind(int n = 0) : d(n, -1) {}
+  int root(int x)
+  {
+    if (d[x] < 0)
+      return x;
+    return d[x] = root(d[x]);
+  }
+  bool unite(int x, int y)
+  {
+    x = root(x);
+    y = root(y);
+    if (x == y)
+    {
+      return false;
+    }
+    if (-d[x] < -d[y])
+      swap(x, y); //y.size()が小でx.size()が大にしておきたい
+    d[x] += d[y];
+    d[y] = x;
+    return true;
+  }
+  bool same(int x, int y) { return root(x) == root(y); }
+  int size(int x) { return -d[root(x)]; }
+};
+//
