@@ -12,9 +12,5 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    vector<int> vc;
-    int n;
-    n = 3;
-    vc(n,-1);
-    cout << vc[0] << endl;
+    
 }

@@ -178,7 +178,7 @@ bool isPrime(T x)
     if (x % i == 0)
       return false;
   return true;
-}
+};
 
 
 //繰り返し二乗法。雰囲気だけ
@@ -192,12 +192,10 @@ T PowMod(S n, T m)
   }
   if (m%2 == 0)
   {
-    return PowMod(n, m/2)*PowMod(n, m/2);
+    T temp = PowMod(n, m/2);
+    return temp*temp;
   }
-  if (m%2 == 1)
-  {
-    return PowMod(n, m-1)%MOD;
-  }
+  return n*PowMod(n, m-1)%MOD;
 }
 
 //
@@ -208,7 +206,7 @@ template<class T>
 T inv_num(T num)
 {
   return PowMod(num, MOD-1);
-}
+};
 
 T COM(T n, T a)
 {
@@ -221,7 +219,7 @@ T COM(T n, T a)
     Y *= (a-i)%MOD;
   }
   return X*(inv_num(Y))%MOD;
-}
+};
 //
 
 //UnionFind
