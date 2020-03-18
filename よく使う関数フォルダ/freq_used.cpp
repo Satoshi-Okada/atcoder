@@ -35,43 +35,11 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 ////////
 
-//最小公倍数を求める
-template <typename T>
-T lcm(T x, T y)
-{
-  T xy = x * y;
-  if (x < y)
-  {
-    swap(x, y);
-  }
-  T r;
-  r = x % y;
-  while (r != 0)
-  {
-    x = y;
-    y = r;
-    r = x % y;
-  }
-  return xy / y;
-};
 
-//最大公約数を求める
-template <typename T>
-T gcd(T x, T y)
-{
-  T xy = x * y;
-  if (x < y)
-    swap(x, y);
-  T r;
-  r = x % y;
-  while (r != 0)
-  {
-    x = y;
-    y = r;
-    r = x % y;
-  }
-  return y;
-};
+
+//gcdとlcm
+ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
+ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 //
 
 //combination 計算(dpバージョン)

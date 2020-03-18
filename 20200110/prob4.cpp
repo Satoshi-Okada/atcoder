@@ -10,24 +10,8 @@ using namespace std;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-
-template <typename T>
-T lcm(T x, T y)
-{
-    T xy = x * y;
-    if (x < y)
-        swap(x, y);
-    T r;
-    r = x % y;
-    while (r != 0)
-    {
-        x = y;
-        y = r;
-        r = x % y;
-    }
-    return xy / y;
-};
-
+ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
+ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 int main()
 {
     int n;
@@ -43,7 +27,7 @@ int main()
     rep(i, n)
     {
         int num = 0;
-        int a;
+        ll a;
         a = vc[i];
         while (a % 2 == 0)
         {
@@ -57,6 +41,7 @@ int main()
         if (counter[i] != counter[i + 1])
         {
             cout << 0 << endl;
+            //cout << "???" << endl;
             return 0;
         }
     }
@@ -64,11 +49,19 @@ int main()
     ll temp = 1;
     for (int i = 0; i < n; i++)
     {
-        temp = lcm(vc[i], temp);
+        temp = lcm(vc[i]/2, temp);
+        if (temp>m)
+        {
+            cout << 0 << endl;
+            //cout << "???" << endl;
+            return 0;
+        }
+        
     }
     ll ans = 0;
     ll p = 0;
-    while (temp * p + (temp / 2) <= m)
+    //cout << temp << endl;
+    while (temp * 2* p + temp <= m)
     {
         p++;
         ans++;
