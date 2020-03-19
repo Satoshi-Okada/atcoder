@@ -51,18 +51,31 @@
             "#include <bits/stdc++.h>"
 			"using namespace std;"
 			"" 
+			"typedef pair<int,int> P;"
 			"#define ll long long"
 			"#define ld long double"
-			"#define MOD 1000000007"
 			"#define rep(i, n) for(int i = 0; i < (int)(n); i++)"
 			"#define PI 3.14159265358979323846"
 			"#define sz(x) ((int)(x).size())"
+			"#define chmin(x,y) x = min(x,y)"
+			"#define chmax(x,y) x = max(x,y)"
 			""
+			
+			"const int INF = 1e9;"
+			"const int MOD = 1e9 + 7;"
+			"const ll LINF = 1e18;"
 			"int main()"
 			"{"
 			"\t${0:}"
 			"}"
         ]
+    },
+    "if": {
+        "prefix": "if",
+        "body": [
+            "if(${1:})${2:}"
+        ],
+        "description": "Code snippet for if ()"
     },
     // Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
     // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
