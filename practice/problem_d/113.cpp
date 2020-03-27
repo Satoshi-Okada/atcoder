@@ -12,5 +12,7 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
+    int h,w,k;
+    cin >> h >> w >> k;
     
 }
