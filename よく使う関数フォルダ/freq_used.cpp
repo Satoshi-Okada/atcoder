@@ -173,7 +173,7 @@ T PowMod(S n, T m)
 template<class T>
 T inv_num(T num)
 {
-  return PowMod(num, MOD-1);
+  return PowMod(num, MOD-2);
 };
 
 T COM(T n, T a)
