@@ -15,21 +15,7 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    int n;
-    cin >> n;
-    vector<P<int, int>> r;
-    vector<P<int, int>> b;
-    rep(i,n)
-    {
-        int x,y;
-        cin >> x >> y;
-        r.push_back(P(x,y));
-    }
-    rep(i, n)
-    {
-        int x, y;
-        cin >> x >> y;
-        b.push_back(P(x, y));
-    }
-    
+    double r;
+    cin >> r;
+    cout << setprecision(11) << (double)2*r*PI << endl;
 }

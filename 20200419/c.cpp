@@ -13,23 +13,20 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
+int counter[200005];
 int main()
 {
     int n;
     cin >> n;
-    vector<P<int, int>> r;
-    vector<P<int, int>> b;
+    int a;
+    rep(i,n-1)
+    {
+        cin >> a;
+        a--;
+        counter[a]++;
+    }
     rep(i,n)
     {
-        int x,y;
-        cin >> x >> y;
-        r.push_back(P(x,y));
+        cout << counter[i] << endl;
     }
-    rep(i, n)
-    {
-        int x, y;
-        cin >> x >> y;
-        b.push_back(P(x, y));
-    }
-    
 }

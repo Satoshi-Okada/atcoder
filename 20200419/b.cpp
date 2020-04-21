@@ -15,21 +15,22 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    int n;
-    cin >> n;
-    vector<P<int, int>> r;
-    vector<P<int, int>> b;
-    rep(i,n)
+    int n,m;
+    cin >> n >> m;
+    vector<int> a(m);
+    int sum = 0;
+    rep(i,m)
     {
-        int x,y;
-        cin >> x >> y;
-        r.push_back(P(x,y));
+        cin >> a[i];
+        sum += a[i];
     }
-    rep(i, n)
+
+    if (n-sum < 0)
     {
-        int x, y;
-        cin >> x >> y;
-        b.push_back(P(x, y));
+        cout << -1 << endl;
+        return 0;
     }
+    cout << n-sum << endl;
+    return 0;
     
 }
