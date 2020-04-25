@@ -149,45 +149,42 @@ bool isPrime(T x)
 };
 
 
-//繰り返し二乗法。雰囲気だけ
-template <class T, class S>
-
-T PowMod(S n, T m)
+//繰り返し二乗法。雰囲気だけ。これ使う時はMODをllとかにしとかないとしんどい
+ll PowMod(ll n, ll m)
 {
-  if (m==0)
+  if (m == 0)
   {
-    return 1;
+    return (ll)1;
   }
-  if (m%2 == 0)
+  if (m % 2 == 0)
   {
-    T temp = PowMod(n, m/2);
-    return temp*temp;
+    ll temp = PowMod(n, m / 2);
+    return temp * temp % MOD;
   }
-  return n*PowMod(n, m-1)%MOD;
+  return n * PowMod(n, m - 1) % MOD;
 }
 
 //
 
 
 //MODの逆元を用いたコンビネーション
-template<class T>
-T inv_num(T num)
+ll inv_num(ll num)
 {
   return PowMod(num, MOD-2);
-};
+}
 
-T COM(T n, T a)
+ll COM(ll n, ll a)
 {
-  T X,Y;
+  ll X, Y;
   X = 1;
   Y = 1;
-  rep(i,a)
+  rep(i, a)
   {
-    X *= (n-i)%MOD;
-    Y *= (a-i)%MOD;
+    X *= (n - i) % MOD;
+    Y *= (a - i) % MOD;
   }
-  return X*(inv_num(Y))%MOD;
-};
+  return X * (inv_num(Y)) % MOD;
+}
 //
 
 //UnionFind
