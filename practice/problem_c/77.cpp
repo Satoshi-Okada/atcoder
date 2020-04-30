@@ -20,19 +20,52 @@ int main()
     vector<int> a(n);
     vector<int> b(n);
     vector<int> c(n);
-    sort(a.begin(), a.end());
-    sort(b.begin(),b.end());
-    sort(c.begin(), c.end());
+    
     rep(i, n) cin >> a[i];
     rep(i,n) cin >> b[i];
     rep(i, n) cin >> c[i];
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+    sort(c.begin(), c.end());
     int b_index = 0;
     int c_index = 0;
-    ll ans = 0;
+
+    vector<int> c_counter(n);
+    rep(i,n)
+    {
+        c_counter[i] = 0;
+    }
     rep(i,n)
     {
         
+        for (; c[c_index]<=b[i] && c_index < n; c_index++)
+        {
+            continue;
+        }
+        c_counter[i] = n-c_index;
     }
+
+    vector<ll> b_counter(n);
+    ll temp = 0;
+    for (int i = n-1; i >=0; i--)
+    {
+        temp += (ll)c_counter[i];
+        b_counter[i] = temp;
+    }
+    ll ans = 0;
+
+    rep(i, n)
+    {
+        for (; b[b_index] <= a[i] && b_index < n; b_index++)
+        {
+            continue;
+        }
+        if(b_index == n)continue;
+        ans += b_counter[b_index];
+    }
+    
+    
+
     cout << ans << endl;
 
 }
