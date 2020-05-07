@@ -30,8 +30,7 @@ void dijkstra(int r)
         P p = q.top();
         int v = p.second;
         q.pop();
-        if (dist[v] < p.first)
-            continue; //こうすることで古い(重複する)データは捨てられる
+        if (dist[v] < p.first) continue; //こうすることで同一ノードの古い(重複する)データは捨てられる。
         for (auto &i : graph[v])
         {
             int w, to;

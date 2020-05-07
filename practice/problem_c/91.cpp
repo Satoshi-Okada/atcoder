@@ -13,6 +13,19 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
+
+bool compare_by_first(pair<int, int> a, pair<int, int> b)
+{
+    if (a.first != b.first)
+    {
+        return a.first < b.first; //昇順
+        //return a.second > b.second; // 降順
+    }
+    else
+    {
+        return a.second < b.second;
+    }
+}
 int main()
 {
     int n;
@@ -31,5 +44,13 @@ int main()
         cin >> x >> y;
         b.push_back(P(x, y));
     }
+    sort(a.begin(), a.end(),compare_by_first);
+    sort(b.begin(), b.end(),compare_by_first);
+    for (auto pair : a)
+    {
+        
+    }
     
+
+
 }
