@@ -17,7 +17,54 @@ int main()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
+    vector<ll> a(n);
     rep(i,n)cin >> a[i];
-    
+    ll sum = 0;
+    // flag = 1なら正にしたい
+    int flag = 1;
+    ll ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+       sum += a[i];
+       if (sum == 0)
+       {
+           ans += (ll)1;
+           if (flag)
+               sum = 1;
+           else
+               sum = -1;
+       }
+       else if ((flag==1) ^ (sum > 0) == 1)
+       {
+           ans += (ll)(abs(sum)+1);
+           if (flag)
+               sum = 1;
+           else
+               sum = -1;
+       }
+       flag = (flag+1)%2;
+    }
+    sum = 0;
+    flag = 0;
+    ll temp = 0;
+    for (int i = 0; i < n; i++)
+    {
+        sum += a[i];
+        if(sum == 0)
+        {
+            temp += (ll)1;
+            if (flag)
+                sum = 1;
+            else
+                sum = -1;
+        }
+        else if ((flag == 1) ^ (sum > 0) == 1)
+        {
+            temp += (ll)(abs(sum) + 1);
+            if (flag)sum = 1;
+            else sum = -1;
+        }
+        flag = (flag + 1) % 2;
+    }
+    cout << min(temp, ans) << endl;
 }

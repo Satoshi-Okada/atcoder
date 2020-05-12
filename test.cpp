@@ -13,50 +13,38 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
+bool sort_func(vector<int> a, vector<int> b)
+{
+    int al = (int)a.size();
+    for(int i = 0; i < al; i++)
+    {
+        if(a[i]!=b[i])
+        {
+            return a[i] > b[i];
+        }
+    }
+}
 int main()
 {
-    string s,t;
-    cin >> s >> t;
-    map<char, int> smp;
-    int sl = (int)s.length();
-    for (int i = 0; i < sl; i++)
+    int n,k;
+    cin >> n >> k;
+    vector<int> a(n);
+    for(int i = 0; i < n ; i++) cin >> a[i];
+    vector<vector<int> > array;
+    for(int i = 0; i <=n-k; i++)
     {
-        if (!smp.count(s[i]))
+        vector<int> temp;
+        for(int j = 0; j < k; j++)
         {
-            smp[s[i]] = 1;
-            continue;
+            temp.push_back(a[i+j]);
         }
-        smp[s[i]]++;
+        array.push_back(temp);
     }
-    int tl = (int)t.length();
-    map<char, int> tmp;
-    for (int i = 0; i < tl; i++)
+    sort(array.begin(), array.end(), sort_func);
+    for(int i = 0; i < k; i++)
     {
-        if (!tmp.count(t[i]))
-        {
-            tmp[t[i]] = 1;
-            continue;
-        }
-        tmp[t[i]]++;
+        cout << array[0][i];
     }
-    bool result = true;
-    int sms = (int)smp.size();
-    int tms = (int)tmp.size();
-    if (sms != tms)
-    {
-        result = false;
-    }
-    else
-    {
-        for(int i = 0; i < sms; i++)
-        {
-            if(smp[i].second!=tmp[i].second)
-            {
-                result = false;
-                break;
-            }
-        }
-    }
-    
-    cout << result << endl;
+    cout  << endl;
+
 }
