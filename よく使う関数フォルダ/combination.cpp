@@ -28,8 +28,10 @@ ll COM(ll n, ll a)
     Y = 1;
     rep(i, a)
     {
-        X *= (n - i) % MOD;
-        Y *= (a - i) % MOD;
+        X *= (n - i);
+        X %= MOD;
+        Y *= (a - i);
+        Y %= MOD;
     }
     return X * (inv_num(Y)) % MOD;
 }

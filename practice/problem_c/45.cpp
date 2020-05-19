@@ -16,27 +16,33 @@ const ll LINF = 1e18;
 int main()
 {
     string s;cin >> s;
-    int sl = (int)s.length();sl--;
+    int sl = (int)s.length();;
 
-    int counter = 1 << sl;
+    int counter = 1 << (sl-1);
     ll sum = 0;
     rep(i,counter)
     {
    
         ll num = 0;
-        int index = 0;
-        rep(j,sl)
+        rep(j,sl+1)
         {
-            num = 10 * num + (s[j] - '0');
-            if(j==sl-1)
+            if(j==0)
             {
-                sum += num;
                 continue;
             }
-            if(i & 1<< j)
+            num = 10 * num + (s[j-1] - '0');
+            if(j==sl)
+            {
+                // cout << num << endl;
+                sum += num;
+                num = 0;
+                continue;
+            }
+            if(!(i & 1<< (j-1)))
             {
                 continue;  
             }
+            // cout << num << endl;
             sum += num;
             num = 0;
         }
