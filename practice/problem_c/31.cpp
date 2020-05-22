@@ -56,7 +56,14 @@ int main()
             int tsum, asum;tsum = 0; asum = 0;
             for (int i = 0; i < n; i++)
             {
-                if(i==t || i==ao)continue;
+                if(t > ao)
+                {
+                    if(i < ao || t <i)continue;
+                }
+                if(t<ao)
+                {
+                    if(i <t || ao <i)continue;
+                }
                 if(flag == 0)
                 {
                     tsum += a[i];
@@ -71,7 +78,7 @@ int main()
             sum_pair.push_back(temp);
         }
         sort(sum_pair.begin(), sum_pair.end(), hikaku);
-        cout << sum_pair[0].tsum << endl;
+        // cout << sum_pair[0].tsum << endl;
         tmx = max(tmx, sum_pair[0].tsum);
     }
     cout << tmx << endl;

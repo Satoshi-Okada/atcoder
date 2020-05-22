@@ -14,12 +14,25 @@ const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 
-int main(int argc, char *argv[])
+char cand[] = {'a', 'b', 'c'};
+vector<string> ans;
+void dfs(int num, string s)
 {
-    for (int d = 0; d < 10; d++)
+    if(num==0)
     {
-        bool result = 11 <= (1 << (d + 1) - 1);
-        cout << result << endl;
+        cout << s << endl;
+        return;
     }
+    for (int i = 0; i < 3; i++)
+    {
+        dfs(num-1, s+cand[i]);
+    }
+    
+    
+}
+int main()
+{
+    int n;cin >> n;
+    dfs(n, "");
     
 }

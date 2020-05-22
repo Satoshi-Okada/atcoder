@@ -2,6 +2,9 @@ const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 
+// 計算量O(v^3)
+// 始点、経由店、終点でDPしている
+// 負閉路なければいける。負の辺があっても良い
 ll dist[1005][1005];
 // 頂点数v, 辺数e
 int v, e;
