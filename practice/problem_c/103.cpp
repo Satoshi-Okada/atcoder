@@ -13,10 +13,14 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
-
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    int n;cin >> n;
+    vector<int> a(n);rep(i,n)cin >> a[i];
+    ll sum = 0;
+    rep(i,n)
+    {
+        sum += (ll)(a[i]-1);
+    }
+    cout << sum << endl;
 }

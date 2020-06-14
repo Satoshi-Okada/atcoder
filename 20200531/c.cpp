@@ -13,10 +13,20 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
-
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    ll la;string b;cin >> la >> b;
+    ll lb;
+    reverse(b.begin(), b.end());
+    ll mul = 1;
+    for (auto &&i : b)
+    {
+        if(i=='.')continue;
+        lb += mul*(i-'0');
+        mul *= 10; 
+    }
+    
+    ll res = lb*la;
+
+    cout << res/100 << endl;
 }

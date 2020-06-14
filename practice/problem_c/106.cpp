@@ -13,10 +13,26 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
-
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    string s;cin >> s;
+    ll k;cin >> k;
+    int index = 0;
+    while(index<(int)s.length())
+    {
+        if(s[index]!='1')
+        {
+            index++;
+            continue;
+        }
+        break;
+    }
+    if(k<=index)
+    {
+        cout << '1' << endl;
+        return 0;
+    }
+    cout << s[index] << endl;
+
+    
 }

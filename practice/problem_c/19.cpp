@@ -13,10 +13,18 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
-
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    int n;cin>> n;
+    vector<int> a(n);rep(i,n) cin >> a[i];
+    rep(i,n)
+    {
+        while(a[i]%2==0) 
+        {
+            a[i] /= 2;
+        }
+    }
+    sort(a.begin(),a.end());  
+    a.erase(unique(a.begin(), a.end()),a.end());
+    cout << sz(a) << endl;
 }

@@ -13,10 +13,11 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
-
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    ll n,k;cin >> n >> k;
+    ll shou = n/k;
+    ll ans = n-shou*k;
+    ans = min(abs(n - shou * k), abs(n-(shou+1)*k));
+    cout << ans << endl;
 }

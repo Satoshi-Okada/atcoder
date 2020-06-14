@@ -13,10 +13,25 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
 
+ll gozyou(ll num)
+{
+    return num * num * num * num * num;
+}
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    int x;cin >> x;
+    ll a,b;
+    for (a = -120; a <=120 ; a++)
+    {
+        for (b = -120; b <= 120; b++)
+        {
+            if(gozyou(a)-gozyou(b)==x)
+            {
+                cout << a << " " << b << endl;
+                return 0;
+            }
+        }
+    }
+    
 }

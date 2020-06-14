@@ -13,10 +13,12 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
-
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    double l;cin >> l;
+    double x,y,z;
+    x = l / (double)3;
+    y = l / (double)3;
+    z = l-x-y;
+    cout << setprecision(11) <<  x * y * z << endl;
 }

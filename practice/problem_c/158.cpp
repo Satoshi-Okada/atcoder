@@ -13,10 +13,18 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
-
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    int a,b;cin >> a >> b;
+    int ans = 0;
+    rep(i,100000)
+    {
+        if(i==0)continue;
+        if((int)((double)i*(double)0.08)==a && (int)((double)i*(double)0.1)==b)
+        {
+            cout << i << endl;
+            return 0;
+        }
+    }
+    cout << -1 << endl;
 }

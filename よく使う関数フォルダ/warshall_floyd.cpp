@@ -9,6 +9,7 @@ ll dist[1005][1005];
 // 頂点数v, 辺数e
 int v, e;
 
+// 経由店を固定して回す(kが頭にくることに注意)
 void warshall_floyd()
 {
     for (int k = 0; k < v; k++)

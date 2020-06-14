@@ -13,10 +13,22 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
-
+ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
+ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    ll k;cin >> k;
+    ll sum = 0;
+    for (ll a = 1; a <=k; a++)
+    {
+        for (ll b = 1; b <= k; b++)
+        {
+            for (ll c = 1; c <= k; c++)
+            {
+                sum += gcd(gcd(a,b),c);
+            }
+        }
+    }
+    cout << sum << endl;
+    
 }

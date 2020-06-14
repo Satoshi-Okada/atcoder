@@ -11,29 +11,29 @@ typedef pair<int,int> P;
 #define chmax(x,y) x = max(x,y)
 
 const int INF = 1e9;
-const int MOD = 1e9 + 7;
+// const int MOD = 1e9 + 7;
+const ll MOD = 2019;
 const ll LINF = 1e18;
-int amari[200005][10]
-ll dp
+ll amari[2019];
 int main()
 {
     string s;
     cin >> s;
-    rep(i,10)
+    reverse(s.begin(),s.end());
+    // あまりの準備l
+    int sl = (int)s.length();
+    ll ans = 0;
+    ll ruiseki = 0;
+    amari[ruiseki]++;
+    ll tenbeki = 1;
+    rep(i,sl)
     {
-        amari[0][i] = i; 
+        ruiseki=(ruiseki + tenbeki*(s[i]-'0'))%MOD;
+  
+        ans += amari[ruiseki];
+        
+        amari[ruiseki]++;
+        tenbeki = tenbeki*10%MOD;
     }
-    for (int i = 1; i < 2000005; i++)
-    {
-        for (int j = 0; j < 10; j++)
-        {
-            amari[i][j] = (amari[i-1][j]*10)%2019;
-        }
-    }
-    int len = s.length();
-
-    
-    
-    
-
+    cout << ans << endl;
 }

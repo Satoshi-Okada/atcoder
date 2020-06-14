@@ -13,10 +13,19 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int a = 1;
-
 int main()
 {
-    int a = 2;
-    cout << a << endl;
+    int n,k; cin >> n >> k;
+    vector<double> r(n);rep(i,n)cin >> r[i];
+    sort(r.begin(),r.end());
+
+    double c = 0;
+    for (int i = n-k; i < n; i++)
+    {
+        if(c <= r[i])
+        {
+            c = (c+r[i])/2;
+        }
+    }
+    cout << setprecision(11)  << c << endl;
 }

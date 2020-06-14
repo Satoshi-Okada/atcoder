@@ -13,26 +13,58 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int dp[10][10];
+
+
+struct hoge
+{
+    int a;
+    int b;
+    int diff;
+    int score;
+};
+vector<hoge> c_data;
+int dfs(int n, int m,int before,int index, vector<int> vc)
+{
+    // for(auto i : vc)cout << i;
+    // cout << endl;
+    if(n==0)
+    {
+        int sum = 0;
+        for(auto i:c_data)
+        {
+            if(vc[i.b]-vc[i.a]==i.diff)
+            {
+                sum += i.score;
+            }
+        }
+        return sum;
+    }
+    int ans = 0;
+    for (int i = before; i <= m; i++)
+    {
+        vc[index] = i;
+        ans = max(ans, dfs(n-1,m,i,index+1,vc));
+    }
+    return ans;
+}
+
+
+
 int main()
 {
     int n,m,q;
     cin >> n >> m >> q;
-    vector<tuple> tuples;
+    
     rep(i,q)
     {
         int a,b,c,d;
         cin >> a >> b >> c >> d;
-        auto f = make_tuple(a,b,c,d)
-        tuples.push_back(f);
+        --a;--b;
+        hoge temp;
+        temp.a = a;temp.b = b;temp.diff = c;temp.score = d;
+        c_data.push_back(temp);
     }
-    sort(tuples.begin(), tuples.end())
-    rep(i,q)
-    {
-        if()
-        chmax(dp[get<1>(tuples[i])][], dp[get<0>(tuples[i])][]+get<3>(tuples[i]);
-    }
-    
-    
-
+    vector<int> vc(n);
+    cout << dfs(n,m,1,0,vc) << endl;
+   
 }
