@@ -15,24 +15,7 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    string s;cin >> s;
-    ll k;cin >> k;
-    int index = 0;
-    while(index<(int)s.length())
-    {
-        if(s[index]=='1')
-        {
-            index++;
-            continue;
-        }
-        break;
-    }
-    if(k<=index)
-    {
-        cout << '1' << endl;
-        return 0;
-    }
-    cout << s[index] << endl;
-
+    int r,c,k;cin >> r >> c >> k;
+    vector<string> s(r);rep(i,r)cin >> s[i];
     
 }

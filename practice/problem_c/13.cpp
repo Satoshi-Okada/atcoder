@@ -15,24 +15,17 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    string s;cin >> s;
-    ll k;cin >> k;
-    int index = 0;
-    while(index<(int)s.length())
+    ll n,h;cin >> n >> h;
+    ll a,b,c,d,e;cin >> a >> b >> c >> d >> e;
+    ll mn = LINF;
+    for (ll x = 0; x <= n; x++)
     {
-        if(s[index]=='1')
+        ll y = max((ll)0,(e*n-e*x-b*x-h)/(d+e)+(ll)1);
+        if(y <= n-x)
         {
-            index++;
-            continue;
+            chmin(mn, a*x + c*y);
         }
-        break;
     }
-    if(k<=index)
-    {
-        cout << '1' << endl;
-        return 0;
-    }
-    cout << s[index] << endl;
-
+    cout << mn << endl;
     
 }
