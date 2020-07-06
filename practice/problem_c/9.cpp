@@ -9,28 +9,20 @@ typedef pair<int,int> P;
 #define sz(x) ((int)(x).size())
 #define chmin(x,y) x = min(x,y)
 #define chmax(x,y) x = max(x,y)
+#define all(x) (x).begin(),(x).end()
 
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-
 int main()
 {
-    int n;cin >> n;
-    if(n%2==1)
-    {
-        cout << "No" << endl;
-        return 0;
-    }
-        
+    int n,k;cin >> n >> k;
     string s;cin >> s;
-    rep(i,n/2)
+    string temp = s;
+    sort(all(temp));
+    string ans;
+    rep(i,n)
     {
-        if(s[i]!=s[i+n/2])
-        {
-            cout << "No" << endl;
-            return 0;
-        }
+        
     }
-    cout << "Yes" << endl;
 }

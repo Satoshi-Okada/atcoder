@@ -13,7 +13,6 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-
 void print()
 {
     cout << endl;
@@ -49,19 +48,28 @@ void print(vector<vector<T>> &df)
     }
 }
 
-int main(int argc, char *argv[])
+
+int main()
 {
-    int a = 1;
-    print("Test");
-    print(a, 3.14, "Hello");
-    print();
+    int n,m;cin >> n >> m;
+    vector<int> imosu(m);
+    int sum = 0;
+    rep(i,n)
+    {
+        int l,r, s;cin >> l >> r>> s;
+        l--;
+        imosu[l] += s;
+        imosu[r] -= s;
+        sum += s;
+    }
+    int temp = 0;
+    rep(i,m)
+    {
+        temp += imosu[i];
+        imosu[i] = temp;
+    }
+    int mn = *min_element(imosu.begin(), imosu.end());
 
-    vector<int> arr{1, 2, 3, 2};
-    vector<string> str_arr{"Hello", "World"};
-    print(arr);
-    print(str_arr);
-    print();
-
-    vector<vector<int>> table{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    print(table);
+    //print(imosu);
+    cout << sum-mn << endl;
 }
