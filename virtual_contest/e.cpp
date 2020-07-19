@@ -14,60 +14,45 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-int n;
-ll a, b;
-vector<ll> h;
-bool enough(ll temp)
-{
-    ll counter = 0;
-    rep(i,n)
-    {
-        ll rm = h[i]-temp*b;
-        if(rm>0)
-        {
-            counter += (rm-1)/(a-b)+1;
-        }
-    }
-    if(counter<=temp)
-    {
-        return true;
-    }
-    return false;
-}
-
-ll bs(ll limit)
-{
-    ll mx,mn;
-    mx = limit;
-    mn = 0;
-    ll med = (mn+mx)/2;
-    while(mx-mn > 1)
-    {
-        if (enough(med))
-        {
-            mx = med;
-            med = (mn + med) / 2;
-            
-        }else
-        {
-            mn = med;
-            med = (med + mx)/2;
-        }
-    }
-    return mx; 
-}
-
 int main()
 {
-    cin >> n >> a >> b;
-    h.resize(n);
-    ll hmax = -1;
-    rep(i,n)
+    int n;cin >> n;
+    int sum = 0;
+    int k = 0;
+    for (int i = 1; i < 1000; i++)
     {
-        cin >> h[i];
-        hmax = max(hmax, h[i]);
+        sum += i;
+        if(sum!=n)
+        {
+            continue;
+        }
+        k = i;
+        cout << "Yes" << endl;
+        int size = n*2/k;
+        vector<int> vc[size];
+        int num = 1;
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = i+1; j < size; j++)
+            {
+                vc[i].push_back(num);
+                vc[j].push_back(num);
+                num++;
+            }
+        }
+        cout << size << endl;
+        rep(i,size)
+        {
+            cout << sz(vc[i]) << " ";
+            for (auto &&j : vc[i])
+            {
+                cout << j << " ";
+            }
+            cout  << endl;
+        }
+        return 0;
     }
-    ll limit = (hmax-1)/b+1;
-    cout << bs(limit) << endl;
-    // cout << enough(2) << endl;
+    cout << "No" << endl;
+    
+
 }

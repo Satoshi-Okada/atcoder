@@ -15,26 +15,36 @@ const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 
-int keta_sum(int num)
+bool isprime(int num)
 {
-    int ret = 0;
-    while(num>0)
+    for(int i = 2; i*i <=num; i++)
     {
-        ret += num%10;
-        num /=10;
+        if(num%i==0)
+        {
+            return false;
+        }
     }
-    return ret;
+    return true;
 }
 int main()
 {
     int n;cin >> n;
-    int mn = INF;
-    for (int i = 1; i <=n-1; i++)
+    vector<int> a(n);
+    int counter = 0;
+    int kouho = 6;
+    while(counter < n)
     {
-        int temp = 0;
-        temp += keta_sum(i);
-        temp += keta_sum(n-i);
-        mn = min(mn, temp);
+        if(isprime(kouho))
+        {
+            a[counter] = kouho;
+            counter++;
+        }
+        kouho += 5;
+        
     }
-    cout << mn << endl;
+    rep(i,n)
+    {
+        cout << a[i] << " ";
+    }
+    cout  << endl;
 }

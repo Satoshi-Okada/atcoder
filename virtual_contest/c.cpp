@@ -14,32 +14,48 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
+
+bool counter[4];
 int main()
 {
-    int n;cin >> n;
-    vector<int> a(n);
-    int ttl = 0;
-    rep(i,n)
+    string s;cin >> s;
+    for (auto &&i : s)
     {
-        cin >> a[i];
-        ttl += a[i];
+        if(i=='N')
+        {
+            counter[0] = true;
+        }else if (i=='W')
+        {
+            counter[1] = true;
+        }else if (i=='S')
+        {
+            counter[2] = true;
+        }else if (i=='E')
+        {
+            counter[3] = true;
+        }
     }
-    if(ttl%n!=0)
+    if(counter[0]&& !counter[2])
     {
-        cout << -1 << endl;
+        cout << "No" << endl;
         return 0;
     }
-    int temp = 0;
-    int hashi = 0;
-    for (int i = 0; i <= n-1; i++)
+    if (!counter[0] && counter[2])
     {
-        temp += (a[i]-ttl/n);
-        if(temp==0)
-        {
-            continue;
-        }
-        hashi++;
+        cout << "No" << endl;
+        return 0;
     }
-    cout << hashi << endl;
-
+    if (counter[1] && !counter[3])
+    {
+        cout << "No" << endl;
+        return 0;
+    }
+    if (!counter[1] && counter[3])
+    {
+        cout << "No" << endl;
+        return 0;
+    }
+     cout << "Yes" << endl;
+    
+    
 }
