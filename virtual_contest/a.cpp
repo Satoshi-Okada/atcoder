@@ -16,22 +16,5 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    int a,b;cin >> a >> b;
-    a = abs(a - 0);
-    b = abs(b - 0);
-    if(a<b)
-    {
-        cout << "Ant" << endl;
-        return 0;
-    }else if (b < a)
-    {
-        cout << "Bug" << endl;
-        return 0;
-    }else
-    {
-        cout << "Draw" <<endl;
-        return 0;
-    }
-    
-    
+     
 }

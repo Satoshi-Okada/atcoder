@@ -16,5 +16,26 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    
+    int n;cin >> n;
+    vector<ll> a(n);rep(i,n)cin >> a[i];
+    int minus = 0;
+    ll mn = INF;
+    rep(i,n)
+    {
+        if(a[i]<0)
+        {
+            minus++;
+        }
+        chmin(mn, abs(a[i]));
+    }
+    ll sum = 0;
+    rep(i, n)
+    {
+        sum += abs(a[i]);
+    }
+    if(minus%2==1)
+    {
+        sum -= 2*mn;
+    }
+    cout << sum << endl;
 }
