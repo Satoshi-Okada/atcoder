@@ -14,48 +14,41 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-
-bool counter[4];
 int main()
 {
     string s;cin >> s;
+    int counter = 0;
     for (auto &&i : s)
     {
-        if(i=='N')
+        if(counter == 0)
         {
-            counter[0] = true;
-        }else if (i=='W')
+            if(i=='i' || i=='I')
+            {
+                counter++;
+            }
+        }
+        if (counter == 1)
         {
-            counter[1] = true;
-        }else if (i=='S')
+            if (i == 'c' || i == 'C')
+            {
+                counter++;
+            }
+        }
+
+        if (counter == 2)
         {
-            counter[2] = true;
-        }else if (i=='E')
-        {
-            counter[3] = true;
+            if (i == 't' || i == 'T')
+            {
+                counter++;
+            }
         }
     }
-    if(counter[0]&& !counter[2])
+    if(counter==3)
     {
-        cout << "No" << endl;
-        return 0;
-    }
-    if (!counter[0] && counter[2])
+        cout << "YES" << endl;
+    }else
     {
-        cout << "No" << endl;
-        return 0;
+        cout << "NO" << endl;
     }
-    if (counter[1] && !counter[3])
-    {
-        cout << "No" << endl;
-        return 0;
-    }
-    if (!counter[1] && counter[3])
-    {
-        cout << "No" << endl;
-        return 0;
-    }
-     cout << "Yes" << endl;
-    
     
 }

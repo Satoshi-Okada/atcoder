@@ -14,27 +14,22 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-
-int keta_sum(int num)
-{
-    int ret = 0;
-    while(num>0)
-    {
-        ret += num%10;
-        num /=10;
-    }
-    return ret;
-}
 int main()
 {
-    int n;cin >> n;
-    int mn = INF;
-    for (int i = 1; i <=n-1; i++)
+    int a,b ,k; cin >> a >> b >> k;
+    k--;
+    int div = 1;
+    int counter = 0;
+    vector<int> ans;
+    while(div<=max(a,b))
     {
-        int temp = 0;
-        temp += keta_sum(i);
-        temp += keta_sum(n-i);
-        mn = min(mn, temp);
+        if(a%div==0 && b%div==0)
+        {
+            ans.push_back(div);
+        }
+        div++;
     }
-    cout << mn << endl;
+    sort(ans.begin(),ans.end(), greater<int>());    
+
+    cout << ans[k] << endl;
 }

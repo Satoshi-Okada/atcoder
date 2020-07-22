@@ -18,24 +18,30 @@ int main()
 {
     int n;cin >> n;
     vector<ll> a(n);rep(i,n)cin >> a[i];
-    int minus = 0;
-    ll mn = INF;
+    vector<ll> ruiseki(n);
+    ll temp = 0;
     rep(i,n)
     {
-        if(a[i]<0)
+        temp += a[i];
+        ruiseki[i] = temp;
+    }
+    map<ll,ll>mp;
+    rep(i,n)
+    {
+        mp[ruiseki[i]]++;
+    }
+    ll ans = 0;
+    for (auto &&i : mp)
+    {
+        if(i.first==0)
         {
-            minus++;
+            ans += i.second * (i.second + 1) / (ll)2;
+            continue;
         }
-        chmin(mn, abs(a[i]));
+        ans += i.second*(i.second-1)/(ll)2;
     }
-    ll sum = 0;
-    rep(i, n)
-    {
-        sum += abs(a[i]);
-    }
-    if(minus%2==1)
-    {
-        sum -= 2*mn;
-    }
-    cout << sum << endl;
+    cout << ans << endl;
+    
+
+
 }

@@ -16,43 +16,26 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    int n;cin >> n;
-    int sum = 0;
-    int k = 0;
-    for (int i = 1; i < 1000; i++)
+    int l;cin >> l;
+    vector<ll> b(l);rep(i,l)cin >> b[i];
+    ll temp = 0;
+    rep(i,l)
     {
-        sum += i;
-        if(sum!=n)
-        {
-            continue;
-        }
-        k = i;
-        cout << "Yes" << endl;
-        int size = n*2/k;
-        vector<int> vc[size];
-        int num = 1;
-        for (int i = 0; i < size; i++)
-        {
-            for (int j = i+1; j < size; j++)
-            {
-                vc[i].push_back(num);
-                vc[j].push_back(num);
-                num++;
-            }
-        }
-        cout << size << endl;
-        rep(i,size)
-        {
-            cout << sz(vc[i]) << " ";
-            for (auto &&j : vc[i])
-            {
-                cout << j << " ";
-            }
-            cout  << endl;
-        }
+        temp ^= b[i];
+    }
+    if(temp!=0)
+    {
+        cout << -1 << endl;
         return 0;
     }
-    cout << "No" << endl;
-    
-
+    vector<ll> ans(l,0);
+    rep(i,l)
+    {
+        if(i==0)continue;
+        ans[i] = b[i-1]^ans[i-1];
+    }
+    rep(i,l)
+    {
+        cout << ans[i] << endl;
+    }
 }
