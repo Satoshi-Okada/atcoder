@@ -13,38 +13,8 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
-bool sort_func(vector<int> a, vector<int> b)
-{
-    int al = (int)a.size();
-    for(int i = 0; i < al; i++)
-    {
-        if(a[i]!=b[i])
-        {
-            return a[i] > b[i];
-        }
-    }
-}
+
+vector<string> vc[26];
 int main()
 {
-    int n,k;
-    cin >> n >> k;
-    vector<int> a(n);
-    for(int i = 0; i < n ; i++) cin >> a[i];
-    vector<vector<int> > array;
-    for(int i = 0; i <=n-k; i++)
-    {
-        vector<int> temp;
-        for(int j = 0; j < k; j++)
-        {
-            temp.push_back(a[i+j]);
-        }
-        array.push_back(temp);
-    }
-    sort(array.begin(), array.end(), sort_func);
-    for(int i = 0; i < k; i++)
-    {
-        cout << array[0][i];
-    }
-    cout  << endl;
-
 }

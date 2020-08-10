@@ -16,26 +16,28 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    int l;cin >> l;
-    vector<ll> b(l);rep(i,l)cin >> b[i];
-    ll temp = 0;
-    rep(i,l)
+    ll k;cin >> k;
+    vector<ll> a;
+    ll ans;
+     for (ll i = 2; i < 51; i++)
     {
-        temp ^= b[i];
+        if ((i - 1) + k / i +  i - ((k % i)-1) > 1e16 + 1000)continue;
+        a.resize(i);
+        rep(j, k % i)
+        {
+            a[j] = (i - 1) + k / i + i - ((k % i) - 1);
+        }
+        for (int j = k%i; j < i; j++)
+        {
+            a[j] = (i - 1) + k / i+1-(k % i);
+        }
+        ans = i;
+        break;
     }
-    if(temp!=0)
+    cout << ans<< endl;
+    for (auto &&i : a)
     {
-        cout << -1 << endl;
-        return 0;
+        cout <<i  << " ";
     }
-    vector<ll> ans(l,0);
-    rep(i,l)
-    {
-        if(i==0)continue;
-        ans[i] = b[i-1]^ans[i-1];
-    }
-    rep(i,l)
-    {
-        cout << ans[i] << endl;
-    }
+    cout << endl;
 }

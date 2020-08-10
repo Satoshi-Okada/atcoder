@@ -14,16 +14,95 @@ typedef pair<int,int> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
+
+int bingo[3][3];
+bool judge[3][3];
 int main()
 {
-    int n,r;cin >> n >> r;
-    if(n>=10)
+  rep(i,3)
+  {
+    rep(j,3)
     {
-        cout << r << endl;
-        return 0;
-    }else
-    {
-        cout << r+100*(10-n) << endl;
+      cin >> bingo[i][j];
     }
-    
+  }
+  int n;cin >> n;
+  rep(i,n)
+  {
+    int temp;cin >> temp;
+    rep(i, 3)
+    {
+      rep(j, 3)
+      {
+        if(temp==bingo[i][j])
+        {
+          judge[i][j] = true;
+        }
+      }
+    }
+  }
+  
+  rep(i,3)
+  {
+    bool flag = true;
+    rep(j,3)
+    {
+      if(!judge[i][j])
+      {
+        flag = false;
+        break;
+      }
+    }
+    if(flag)
+    {
+      cout << "Yes" << endl;
+      return 0;
+    }
+  }
+  rep(i, 3)
+  {
+    bool flag = true;
+    rep(j, 3)
+    {
+      if (!judge[j][i])
+      {
+        flag = false;
+        break;
+      }
+    }
+    if (flag)
+    {
+      cout << "Yes" << endl;
+      return 0;
+    }
+  }
+  bool flag = true;
+  rep(i,3)
+  {
+    if(!judge[i][i])
+    {
+      flag = false;
+      break;
+    }
+  }
+  if(flag)
+  {
+    cout << "Yes" << endl;
+    return 0;
+  }
+  flag = true;
+  rep(i,3)
+  {
+    if(!judge[i][2-i])
+    {
+      flag = false;
+      break;
+    }
+  }
+  if (flag)
+  {
+    cout << "Yes" << endl;
+    return 0;
+  }
+  cout << "No" << endl;
 }

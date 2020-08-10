@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef pair<int,int> P;
+
 #define ll long long
 #define ld long double
 #define rep(i, n) for(int i = 0; i < (int)(n); i++)
@@ -10,26 +10,45 @@ typedef pair<int,int> P;
 #define chmin(x,y) x = min(x,y)
 #define chmax(x,y) x = max(x,y)
 #define all(x) (x).begin(),(x).end()
-
+typedef pair<ll, ll> P;
 const int INF = 1e9;
 const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    int a,b ,k; cin >> a >> b >> k;
-    k--;
-    int div = 1;
-    int counter = 0;
-    vector<int> ans;
-    while(div<=max(a,b))
+    // ll q,h,s,d;cin >> q >> h >> s >> d;
+    vector<ll> b(4);
+    priority_queue<P, vector<P>, greater<P>> pq;
+    ll num = 8;
+    rep(i,4)
     {
-        if(a%div==0 && b%div==0)
-        {
-            ans.push_back(div);
-        }
-        div++;
+        ll temp;cin >> temp;
+        b[i] = temp;
+        pq.push(P(num*temp,(ll)i));
+        num/=2;
     }
-    sort(ans.begin(),ans.end(), greater<int>());    
-
-    cout << ans[k] << endl;
+    ll n;cin >> n;
+    n = 4*n;
+    ll sum = 0;
+    while(true)
+    {
+        ll index = pq.top().second;
+        pq.pop();
+        //cout << index << endl;
+        ll div = 1;
+        for (ll i = 0; i < index; i++)
+        {
+            div *= 2;
+        }
+        
+        ll kosu = n/div;
+        n %=div;
+        //cout << n << endl;
+        sum += b[index]*kosu;
+        if(n==0)
+        {
+            break;
+        }
+    }
+    cout << sum << endl;
 }

@@ -30,3 +30,5 @@ struct UnionFind
     int size(int x) { return -d[root(x)]; }
 };
 //
+// 宣言する時はUnionFind uf(ノード数)
+// ノードは0インデックス

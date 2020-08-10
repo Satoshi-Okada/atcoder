@@ -16,32 +16,29 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    int n;cin >> n;
-    vector<ll> a(n);rep(i,n)cin >> a[i];
-    vector<ll> ruiseki(n);
-    ll temp = 0;
+    ll n; cin >> n;
+    vector<ll> a(n);
+    ll sum = 0;
     rep(i,n)
     {
-        temp += a[i];
-        ruiseki[i] = temp;
+        cin >> a[i];
+        sum += a[i];
     }
-    map<ll,ll>mp;
+    bool flag = false;
     rep(i,n)
     {
-        mp[ruiseki[i]]++;
-    }
-    ll ans = 0;
-    for (auto &&i : mp)
-    {
-        if(i.first==0)
+        if(a[i]%2==0)
         {
-            ans += i.second * (i.second + 1) / (ll)2;
-            continue;
+            flag = true;
+            break;
         }
-        ans += i.second*(i.second-1)/(ll)2;
     }
-    cout << ans << endl;
+    if(flag)
+    {
+        cout << "first" << endl;
+    }else
+    {
+        cout << "second" << endl;
+    }
     
-
-
 }
