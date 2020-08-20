@@ -16,26 +16,26 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    int n;cin >> n;
-    ll a,b;cin >> a >> b;
-    vector<ll> x(n);
-    rep(i,n)
+    ll x,k,d;
+    cin >> x >> k >> d;
+    x = abs(x);
+    if((k-x/d)<0)
     {
-        cin >> x[i];
-    }
-    sort(x.begin(), x.end());
-    ll h = 0;
-    for (int i = 0; i < n-1; i++)
+        cout << x-k*d << endl;
+        return 0;
+    }else
     {
-        ll temp = 0;
-        if((temp = a*(x[i+1]-x[i])) <b)
+        if((k-(x/d))%2==0)
         {
-            h+= temp;
+            cout << abs(x-d*(x/d)) << endl;
+            return 0;
         }else
         {
-            h+=b;
+            cout << abs(x-d*((x/d)+1)) << endl;
+            return 0;
         }
+        
     }
-    cout << h << endl;
     
+
 }

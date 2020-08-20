@@ -16,29 +16,69 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    ll n; cin >> n;
-    vector<ll> a(n);
-    ll sum = 0;
-    rep(i,n)
+    int n;cin >> n;
+    int k;cin >> k;
+    vector<int> p(n);rep(i,n)
     {
-        cin >> a[i];
-        sum += a[i];
+        cin >> p[i];
+        p[i]--;
     }
-    bool flag = false;
+
+    vector<ll> c(n);rep(i,n)cin >> c[i];
+
+    vector<vector<int> > lps;
+
+    int top, next;
+    top = 0;
+    next = -1;
+    vector<bool> check(n);rep(i,n)check[i] = false;
     rep(i,n)
     {
-        if(a[i]%2==0)
+        if(!check[i])
         {
-            flag = true;
-            break;
+            top = i;
+            vector<int> temp;
+            temp.push_back(c[i]);
+            next = p[i];
+            check[i] = true;
+            while(top!=next)
+            {
+                temp.push_back(c[next]);
+                check[next] = true;
+                next = p[next];
+            }
+            lps.push_back(temp);
         }
     }
-    if(flag)
+    vector<ll> lpscore;
+
+    for (auto &&i : lps)
     {
-        cout << "first" << endl;
-    }else
+        ll temp = 0;
+        for (auto &&j : i)
+        {
+            temp += lps[j];
+        }
+        lpscore.push_back(temp);
+    }
+    for (auto &&i : lps)
     {
-        cout << "second" << endl;
+        int lsize = sz(i);
+        for (int j = 0; j < lsize; j++)
+        {
+            i.push_back(i[j]);
+        }
     }
     
+    ll ans = -LINF;
+
+    for(int i = 0; i < sz(lps); i++)
+    {
+        int lsize = sz(lps[i]);
+        // 一周のスコアが負
+        if(lpscore[i]<0)
+        {
+            chmax(ans, )
+        }
+    }
 }

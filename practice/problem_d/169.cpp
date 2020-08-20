@@ -16,21 +16,31 @@ const int MOD = 1e9 + 7;
 const ll LINF = 1e18;
 int main()
 {
-    string s;
-    cin >> s;
-    int counter = 0;
-    int ans = 0;
-    rep(i,3)
+    int n;cin >> n;
+    vector<int> a(n);
+    vector<P> ta(n);
+    vector<int> b(n);
+    vector<P> tb(n);
+    rep(i,n){
+        cin>> a[i] >> b[i];
+    }
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+
+    int am,bm;
+    int ans;
+    if(n%2==0)
     {
-        if(s[i]=='R')
-        {
-            counter++;
-        }else
-        {
-            counter = 0;
-        }
-        ans = max(ans, counter);
-        
+        am = a[n / 2 - 1] + a[n / 2];
+        bm = b[n / 2 - 1] + b[n / 2];
+        ans = bm-am+1;
+
+    }else
+    {
+        am = a[n / 2];
+        bm = b[n / 2];
+        ans = bm-am+1;
     }
     cout << ans << endl;
+
 }
